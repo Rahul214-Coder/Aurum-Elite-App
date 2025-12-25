@@ -1,0 +1,8 @@
+
+{
+  "name": "Aurum Elite",
+  "description": "Premium Jewellery Management & Gold Bullion Inventory System with AI-assisted cataloging and value tracking.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

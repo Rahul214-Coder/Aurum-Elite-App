@@ -1,0 +1,195 @@
+
+{
+	"info": {
+		"_postman_id": "ae-8888-4444-9999-aurumelite",
+		"name": "Aurum Elite API",
+		"description": "API collection for testing the Aurum Elite Jewellery Management System backend (Node.js/RDBMS).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@aurumelite.io\",\n    \"password\": \"gold123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items (Jewellery)",
+			"item": [
+				{
+					"name": "List Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/items?page=1&limit=10&search=&sortBy=createdAt&order=desc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"items"
+							],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "10" },
+								{ "key": "search", "value": "" },
+								{ "key": "sortBy", "value": "createdAt" },
+								{ "key": "order", "value": "desc" }
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"24K Gold Pendant\",\n    \"price\": 1200.50,\n    \"categoryId\": \"cat_jewel_1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/items/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"items",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{base_url}}/api/items/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"items",
+								":id"
+							],
+							"variable": [
+								{ "key": "id", "value": "ID-XYZ-2024" }
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groups (Categories)",
+			"item": [
+				{
+					"name": "List Groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/groups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Group",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Rare Gems\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/groups/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": { "type": "text/javascript", "exec": [ "" ] }
+		},
+		{
+			"listen": "test",
+			"script": { "type": "text/javascript", "exec": [ "" ] }
+		}
+	],
+	"variable": [
+		{ "key": "base_url", "value": "http://localhost:3000", "type": "string" },
+		{ "key": "token", "value": "your_auth_token_here", "type": "string" }
+	]
+}
